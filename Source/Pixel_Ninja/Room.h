@@ -25,10 +25,10 @@ protected:
 	UPaperTileMapComponent* TileMapComponent;
 	
 	UPROPERTY()
-	float SizeHeight = 320.f;
+	float SizeHeight = 640.f;
 	
 	UPROPERTY()
-	float SizeWidth = 160.f;
+	float SizeWidth = 320.f;
 
 	UFUNCTION()
 	void GenerateRoomContent();

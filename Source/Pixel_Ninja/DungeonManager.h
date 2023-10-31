@@ -20,16 +20,19 @@ protected:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	int seed = 42;
 
-	UPROPERTY()
-	unsigned int XGridSize = 10;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite) 
+	int XGridSize = 8; //MIN 5
 	
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	int YGridSize = 6; //MIN 5
+
 	UPROPERTY()
-	unsigned int YGridSize = 10;
+	unsigned int MustRoomNumbers = 2;
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	URoomDataAsset* RoomGenTemplate;
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	TArray<ARoom*> roomsArray; //INIT
 	
 	TArray<TArray<ARoom*>> DungeonGrid;

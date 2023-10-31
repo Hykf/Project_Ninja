@@ -27,6 +27,12 @@ public:
 	//TODO zamienic potem ta jedna liste na dwie MUST[start,koniec,event etc.] i MAY[korytarz pulapka etc.] 
 	
 	UPROPERTY(EditAnywhere)
-	TArray<FRoomsStruct> AvailableRoomsClasses;
+	TArray<FRoomsStruct> MustRooms;
+
+	UPROPERTY(EditAnywhere)
+	TArray<FRoomsStruct> MayRooms;
+	
+	UPROPERTY(EditAnywhere)
+	TArray<FRoomsStruct> BorderRooms;
 	
 };
