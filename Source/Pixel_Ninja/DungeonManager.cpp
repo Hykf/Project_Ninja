@@ -50,7 +50,7 @@ TArray<ARoom*> ADungeonManager::GenerateRandomRooms() //InitRooms
 		
 		RandomNumber = FMath::RandRange(0, 100);
 		
-		if (MustRoomNumbers != 0 && RandomNumber > 90) {
+		if (MustRoomNumbers != 0 && RandomNumber > 65) {
 			
 			std::uniform_int_distribution<int> distribution(0, RoomGenTemplate->MustRooms.Num() - 1);
 			index = distribution(rng);
