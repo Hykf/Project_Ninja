@@ -3,6 +3,7 @@
 
 #include "DungeonManager.h"
 #include <random>
+#include "Algo/RandomShuffle.h"
 #include "Kismet/KismetMathLibrary.h"
 
 ADungeonManager::ADungeonManager()
@@ -44,16 +45,13 @@ TArray<ARoom*> ADungeonManager::GenerateRandomRooms() //InitRooms
 	int tempIndex = 0;
 	unsigned int index = 0;
 	int RandomNumber = 0;
+	
 	MustRoomNumbers = RoomGenTemplate->MustRooms.Num();
 	
 	for (int i = 0; i != (XGridSize * YGridSize - (2 * XGridSize + 2 * YGridSize)) + 4 ; i++) {
 		
-		RandomNumber = FMath::RandRange(0, 100);
-		
-		if (MustRoomNumbers != 0 && RandomNumber > 65) {
+		if (MustRoomNumbers != 0 ) {
 			
-			std::uniform_int_distribution<int> distribution(0, RoomGenTemplate->MustRooms.Num() - 1);
-			index = distribution(rng);
 			auto RoomClass = RoomGenTemplate->MustRooms[MustRoomNumbers-1].RoomClasses;
 			ARoom* NewRoom = GetWorld()->SpawnActor<ARoom>(RoomClass);
 			NewRoom->SetId(i + tempIndex);
@@ -68,8 +66,9 @@ TArray<ARoom*> ADungeonManager::GenerateRandomRooms() //InitRooms
 			NewRoom->SetId(i + tempIndex);
 			ArrayToReturn.Add(NewRoom);
 		}
-		
 	}
+	
+	Algo::RandomShuffle(ArrayToReturn);
 	
 	return  ArrayToReturn;
 }
@@ -94,7 +93,7 @@ void ADungeonManager::SetUpDungeon()
 	TArray<ARoom*> BorderRooms;
 	FVector3d loc;
 
-	for(int it = 0; it!=(2*XGridSize + 2*YGridSize) ;it++)
+	for(int it = 0; it!=(2*XGridSize + 2*YGridSize) - 4 ;it++)
 	{
 		auto RoomClass = RoomGenTemplate->BorderRooms[0].RoomClasses;
 		ARoom* NewRoom = GetWorld()->SpawnActor<ARoom>(RoomClass);
@@ -113,6 +112,27 @@ void ADungeonManager::SetUpDungeon()
 				BorderRooms[j]->SetActorLocation(loc,0,0);
 				DungeonGrid[RowIndex][ColumnIndex] = BorderRooms[j];
 				j++;
+
+				if(RowIndex == DungeonGrid.Num()-1)
+				{
+					DungeonGrid[RowIndex][ColumnIndex]->RightWallVisibility = true;
+				}
+				
+				if(RowIndex==0) 
+				{
+					DungeonGrid[RowIndex][ColumnIndex]->LeftWallVisibility = true;
+				}
+				
+				if(ColumnIndex == DungeonGrid[RowIndex].Num()-1)
+				{
+					DungeonGrid[RowIndex][ColumnIndex]->RoofVisibility = true;
+				}
+				if(ColumnIndex==0)
+				{
+					DungeonGrid[RowIndex][ColumnIndex]->FloorVisibility = true;
+				}
+
+				DungeonGrid[RowIndex][ColumnIndex]->ApplyVisibility();
 			}
 			else
 			{

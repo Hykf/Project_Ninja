@@ -23,6 +23,14 @@ protected:
 	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	UPaperTileMapComponent* TileMapComponent;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	UPaperTileMapComponent* TileMapComponentWallLeft;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	UPaperTileMapComponent* TileMapComponentWallRight;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	UPaperTileMapComponent* TileMapComponentWallUp;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	UPaperTileMapComponent* TileMapComponentWallDown;
 	
 	UPROPERTY()
 	float SizeHeight = 640.f;
@@ -32,8 +40,17 @@ protected:
 
 	UFUNCTION()
 	void GenerateRoomContent();
-	
+
 public:
+	
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	bool FloorVisibility  ;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	bool RoofVisibility ;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	bool LeftWallVisibility;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	bool RightWallVisibility ;
 	
 	UFUNCTION()
 	int GetId();
@@ -44,7 +61,10 @@ public:
 	float GetSizeHeight() const;
 	UFUNCTION()
 	float GetSizeWidth() const;
-
+	UFUNCTION()
+	void ApplyVisibility();
+	UFUNCTION()
+	void ChangeVisibility(UPaperTileMapComponent* TileComp, bool isVisible);
 
 protected:
 	virtual void BeginPlay() override;
