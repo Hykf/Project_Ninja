@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-//#include "DamageCategory.h"
+#include "DamageCategory.h"
 #include "Components/ActorComponent.h"
 #include "StatsComponent.generated.h"
 
@@ -67,8 +67,8 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	bool bAlive = true; 
 	
-	/*UFUNCTION(BlueprintCallable)
-	void ReceiveDamage(EDamageCategory DamageType, float DamageAmount);*/
+	UFUNCTION(BlueprintCallable)
+	void ReceiveDamage(EDamageCategory DamageType, float DamageAmount);
 	UFUNCTION(BlueprintCallable)
 	void ReceiveHealing(float HealingAmount);
 	UFUNCTION(BlueprintCallable)

@@ -2,6 +2,7 @@
 
 
 #include "StatsComponent.h"
+#include "DamageCategory.h"
 
 // Sets default values for this component's properties
 UStatsComponent::UStatsComponent()
@@ -14,7 +15,7 @@ UStatsComponent::UStatsComponent()
 }
 
 
-/*void UStatsComponent::ReceiveDamage(EDamageCategory DamageType, float DamageAmount)
+void UStatsComponent::ReceiveDamage(EDamageCategory DamageType, float DamageAmount)
 {
 	OnGetHit.Broadcast();
 	float ReceivedDamage;
@@ -33,7 +34,7 @@ UStatsComponent::UStatsComponent()
 		break;
 		default: break;
 	}
-}*/
+}
 
 void UStatsComponent::ReceiveHealing(float HealingAmount)
 {
