@@ -26,6 +26,8 @@ void ADungeonManager::InitializeDungeon()
 
 }
 
+
+
 TArray<ARoom*> ADungeonManager::GetRoomsArray() const
 {
 	return roomsArray;
@@ -56,6 +58,7 @@ TArray<ARoom*> ADungeonManager::GenerateRandomRooms() //InitRooms
 			ARoom* NewRoom = GetWorld()->SpawnActor<ARoom>(RoomClass);
 			NewRoom->SetId(i + tempIndex);
 			ArrayToReturn.Add(NewRoom);
+			MustRoomsArray.Add(NewRoom);
 			MustRoomNumbers--;
 			
 		} else {
@@ -101,7 +104,6 @@ void ADungeonManager::SetUpDungeon()
 		BorderRooms.Add(NewRoom);
 	}	
 	
-
 	for (int32 RowIndex = 0; RowIndex < DungeonGrid.Num(); RowIndex++) //X
 	{
 		for (int32 ColumnIndex = 0; ColumnIndex < DungeonGrid[RowIndex].Num(); ColumnIndex++) //Z
@@ -148,6 +150,7 @@ void ADungeonManager::SetUpDungeon()
 	}
 
 	//Dodaj zawartosc BordersRoom to roomArray
+	MakeWayFromStartToEnd();
 }
 
 void ADungeonManager::Initialize2DGrid()
@@ -158,4 +161,41 @@ void ADungeonManager::Initialize2DGrid()
 	{
 		DungeonGrid[RowIndex].SetNum(YGridSize); 
 	}
+}
+
+void ADungeonManager::MakeWayFromStartToEnd()
+{
+	int startX,startY,koniecX,koniecY;
+
+	for (int32 RowIndex = 0; RowIndex < DungeonGrid.Num(); ++RowIndex)
+	{
+		for (int32 ColumnIndex = 0; ColumnIndex < DungeonGrid[RowIndex].Num(); ++ColumnIndex)
+		{
+			if (DungeonGrid[RowIndex][ColumnIndex] == MustRoomsArray[0])
+			{
+				startX = RowIndex;
+				startY = ColumnIndex;
+			}
+			if (DungeonGrid[RowIndex][ColumnIndex] == MustRoomsArray[1])
+			{
+				koniecX = RowIndex;
+				koniecY = ColumnIndex;
+			}
+		}
+	}
+	
+	GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Green, FString::Printf(TEXT("StartX: %d, KoniecX: %d"), startX, startY));
+	GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Green, FString::Printf(TEXT("StartY: %d, KoniecY: %d"), koniecX, koniecY));
+
+	/*if(startX)
+	{
+		int diffX = FMath::Abs(startX - koniecX);
+		int diffY = FMath::Abs(startY - koniecY);
+
+		for(int i = diffX; diffX!=0 ;i--)
+		{
+			DungeonGrid[koniecX][koniecY]->LeftWallVisibility = false;
+			DungeonGrid[koniecX-i][koniecY]->RightWallVisibility = false;
+		}
+	}*/
 }

@@ -34,6 +34,9 @@ protected:
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	TArray<ARoom*> roomsArray; //INIT
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TArray<ARoom*> MustRoomsArray;
 	
 	TArray<TArray<ARoom*>> DungeonGrid;
 	
@@ -54,6 +57,9 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 	void InitializeDungeon();
+
+	UFUNCTION()
+	void MakeWayFromStartToEnd();
 
 public:
 	UFUNCTION(BlueprintCallable)
