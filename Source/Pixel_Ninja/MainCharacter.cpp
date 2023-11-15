@@ -3,8 +3,8 @@
 
 #include "MainCharacter.h"
 
+
 AMainCharacter::AMainCharacter()
 {
-	PrimaryActorTick.bCanEverTick = true;
-	Stats = CreateDefaultSubobject<UStatsComponent>(TEXT("Stats Component"));
+	TreasureComponent = CreateDefaultSubobject<UTreasureComponent>(TEXT("TreasureComp"));
 }

@@ -3,22 +3,22 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "PaperZDCharacter.h"
-#include "StatsComponent.h"
+#include "CharacterBase.h"
+#include "TreasureComponent.h"
 #include "MainCharacter.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class PIXEL_NINJA_API AMainCharacter : public APaperZDCharacter
+class PIXEL_NINJA_API AMainCharacter : public ACharacterBase
 {
 	GENERATED_BODY()
 public:
 	
 	AMainCharacter();
-	
-	UPROPERTY(BlueprintReadWrite,VisibleAnywhere)
-	class UStatsComponent* Stats;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	UTreasureComponent* TreasureComponent;
 	
 };

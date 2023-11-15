@@ -51,6 +51,8 @@ public:
 	bool LeftWallVisibility ;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	bool RightWallVisibility ;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	bool bIsSpecialRoom ;
 	
 	UFUNCTION()
 	int GetId();

@@ -23,15 +23,15 @@ public:
 	// Sets default values for this component's properties
 	UStatsComponent();
 
-	UPROPERTY(BlueprintCallable)
+	UPROPERTY(BlueprintCallable,BlueprintAssignable)
 	FOnGetHit OnGetHit;
-	UPROPERTY(BlueprintCallable)
+	UPROPERTY(BlueprintCallable,BlueprintAssignable)
 	FOnReceiveHealing OnReceiveHealing;
-	UPROPERTY(BlueprintCallable)
+	UPROPERTY(BlueprintCallable,BlueprintAssignable)
 	FOnDie OnDie;
-	UPROPERTY(BlueprintCallable)
+	UPROPERTY(BlueprintCallable,BlueprintAssignable)
 	FOnFullRecovery OnFullRecovery;
-	UPROPERTY(BlueprintCallable)
+	UPROPERTY(BlueprintCallable,BlueprintAssignable)
 	FOnLevelUp OnLevelUp;
 
 	UPROPERTY(BlueprintReadWrite)
