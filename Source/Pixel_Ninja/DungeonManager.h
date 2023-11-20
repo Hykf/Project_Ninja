@@ -61,6 +61,15 @@ protected:
 	UFUNCTION()
 	void MakeWayFromStartToEnd();
 
+	UFUNCTION()
+	void DrawRandomPath(int HowMany,int StartX = 0, int StartY = 0);
+
+	UFUNCTION()
+	void DrawPath(int StartX,int StartY, int EndX, int EndY);
+
+	UFUNCTION()
+	void OpenWay(int x,int y, int location);
+
 public:
 	UFUNCTION(BlueprintCallable)
 	TArray<ARoom*> GetRoomsArray() const;

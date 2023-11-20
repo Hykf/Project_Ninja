@@ -44,13 +44,13 @@ protected:
 public:
 	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	bool FloorVisibility   ;
+	bool FloorVisibility = true  ;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	bool RoofVisibility ;
+	bool RoofVisibility = true;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	bool LeftWallVisibility ;
+	bool LeftWallVisibility = true;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	bool RightWallVisibility ;
+	bool RightWallVisibility = true ;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	bool bIsSpecialRoom ;
 	

@@ -26,13 +26,13 @@ ARoom::ARoom(int _id)
 	PrimaryActorTick.bCanEverTick = true;
 	
 	id = _id;
-
+	ApplyVisibility();
 }
 
 void ARoom::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	ApplyVisibility();
 }
 
 void ARoom::Tick(float DeltaTime)

@@ -151,6 +151,7 @@ void ADungeonManager::SetUpDungeon()
 
 	//Dodaj zawartosc BordersRoom to roomArray
 	MakeWayFromStartToEnd();
+	
 }
 
 void ADungeonManager::Initialize2DGrid()
@@ -165,7 +166,8 @@ void ADungeonManager::Initialize2DGrid()
 
 void ADungeonManager::MakeWayFromStartToEnd()
 {
-	int startX,startY,koniecX,koniecY;
+	int StartX,StartY,KoniecX,KoniecY = 0;
+	int Counter = 0;
 
 	for (int32 RowIndex = 0; RowIndex < DungeonGrid.Num(); ++RowIndex)
 	{
@@ -173,29 +175,109 @@ void ADungeonManager::MakeWayFromStartToEnd()
 		{
 			if (DungeonGrid[RowIndex][ColumnIndex] == MustRoomsArray[0])
 			{
-				startX = RowIndex;
-				startY = ColumnIndex;
+				StartX = RowIndex;
+				StartY = ColumnIndex;
 			}
 			if (DungeonGrid[RowIndex][ColumnIndex] == MustRoomsArray[1])
 			{
-				koniecX = RowIndex;
-				koniecY = ColumnIndex;
+				KoniecX = RowIndex;
+				KoniecY = ColumnIndex;
 			}
 		}
 	}
 	
-	GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Green, FString::Printf(TEXT("StartX: %d, KoniecX: %d"), startX, startY));
-	GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Green, FString::Printf(TEXT("StartY: %d, KoniecY: %d"), koniecX, koniecY));
-
-	/*if(startX)
+	if(StartX)
 	{
-		int diffX = FMath::Abs(startX - koniecX);
-		int diffY = FMath::Abs(startY - koniecY);
+		DrawPath(StartX,StartY,KoniecX,KoniecY);
+		DrawRandomPath(5,StartX,StartY);
+	}
+}
 
-		for(int i = diffX; diffX!=0 ;i--)
+void ADungeonManager::DrawRandomPath(int HowMany, int StartX, int StartY)
+{
+	std::mt19937 rng;
+	rng.seed(seed);
+	std::uniform_int_distribution<> dis(0, FMath::Min(XGridSize - 1,YGridSize - 1));
+	
+		for(int i = 0; i!=HowMany;i++)
 		{
-			DungeonGrid[koniecX][koniecY]->LeftWallVisibility = false;
-			DungeonGrid[koniecX-i][koniecY]->RightWallVisibility = false;
+			StartX = StartX ? StartX: dis(rng);
+			StartY = StartY ? StartY: dis(rng);
+			DrawPath(StartX,StartY,dis(rng),dis(rng));
 		}
-	}*/
+	
+}
+
+void ADungeonManager::DrawPath(int StartX, int StartY, int EndX, int EndY)
+{
+	int diffX = (StartX - EndX); // 3
+	int diffY = (StartY - EndY); // 2
+
+	int LastKnowedX = StartX;
+	int LastKnowedY = StartY;
+
+	for (int i = 0; i < FMath::Abs(diffX); i++) {
+		if (diffX > 0) {
+			OpenWay(LastKnowedX, LastKnowedY, 4);
+			LastKnowedX = LastKnowedX - 1;
+		}
+		else if (diffX < 0) {
+			OpenWay(LastKnowedX, LastKnowedY, 2);
+			LastKnowedX = LastKnowedX + 1;
+		}
+	}
+
+	// Przesunięcie wzdłuż osi Y
+	for (int i = 0; i < FMath::Abs(diffY); i++) {
+		if (diffY > 0) {
+			OpenWay(LastKnowedX, LastKnowedY, 3);
+			LastKnowedY = LastKnowedY - 1;
+		}
+		else if (diffY < 0) {
+			OpenWay(LastKnowedX, LastKnowedY, 1);
+			LastKnowedY = LastKnowedY + 1;
+		}
+	}
+}
+
+void ADungeonManager::OpenWay(int x, int y, int location) // 1 ->UP , 2-> Right, 3->Down, 4->Left
+{
+	ARoom* CurrentRoom = nullptr;
+	ARoom* NearRoom = nullptr;
+	
+	switch (location)
+	{
+	case 1:
+		DungeonGrid[x][y]->RoofVisibility = false;
+		CurrentRoom = DungeonGrid[x][y];
+		DungeonGrid[x][y+1]->FloorVisibility = false;
+		NearRoom = DungeonGrid[x][y+1];
+		break;
+	case 2:
+		DungeonGrid[x][y]->RightWallVisibility = false;
+		CurrentRoom = DungeonGrid[x][y];
+		DungeonGrid[x+1][y]->LeftWallVisibility = false;
+		NearRoom = DungeonGrid[x+1][y];
+		break;
+	case 3:
+		DungeonGrid[x][y]->FloorVisibility = false;
+		CurrentRoom = DungeonGrid[x][y];
+		DungeonGrid[x][y-1]->RoofVisibility = false;
+		NearRoom = DungeonGrid[x][y-1];
+		break;
+	case  4:
+		DungeonGrid[x][y]->LeftWallVisibility = false;
+		CurrentRoom = DungeonGrid[x][y];
+		DungeonGrid[x-1][y]->RightWallVisibility = false;
+		NearRoom = DungeonGrid[x-1][y];
+		break;
+		
+	default:
+		break;
+	}
+	if(CurrentRoom && NearRoom)
+	{
+		CurrentRoom->ApplyVisibility();
+		NearRoom->ApplyVisibility();
+	}
 }
