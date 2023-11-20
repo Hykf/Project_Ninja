@@ -215,7 +215,7 @@ void ADungeonManager::DrawPath(int StartX, int StartY, int EndX, int EndY)
 
 	int LastKnowedX = StartX;
 	int LastKnowedY = StartY;
-
+	
 	for (int i = 0; i < FMath::Abs(diffX); i++) {
 		if (diffX > 0) {
 			OpenWay(LastKnowedX, LastKnowedY, 4);

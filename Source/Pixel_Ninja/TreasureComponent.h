@@ -16,12 +16,16 @@ public:
 	// Sets default values for this component's properties
 	UTreasureComponent();
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	int GoldAmount;
 	UPROPERTY()
 	int MaterialAmount;
 	UPROPERTY()
 	int ChiAmount;
+
+	UFUNCTION(BlueprintCallable)
+	int AddGold(int Amount);
+
 
 protected:
 	// Called when the game starts

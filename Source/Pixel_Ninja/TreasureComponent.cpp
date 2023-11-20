@@ -14,6 +14,13 @@ UTreasureComponent::UTreasureComponent()
 }
 
 
+
+int UTreasureComponent::AddGold(int Amout)
+{
+	GoldAmount += Amout;
+	return  GoldAmount;
+}
+
 // Called when the game starts
 void UTreasureComponent::BeginPlay()
 {
