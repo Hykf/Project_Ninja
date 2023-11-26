@@ -36,7 +36,7 @@ protected:
 	float SizeHeight = 640.f;
 	
 	UPROPERTY()
-	float SizeWidth = 320.f;
+	float SizeWidth = 640.f;
 
 	UFUNCTION()
 	void GenerateRoomContent();

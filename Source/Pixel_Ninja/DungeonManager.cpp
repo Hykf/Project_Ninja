@@ -53,7 +53,7 @@ TArray<ARoom*> ADungeonManager::GenerateRandomRooms() //InitRooms
 	
 	for (int i = 0; i != (XGridSize * YGridSize - (2 * XGridSize + 2 * YGridSize)) + 4 ; i++) {
 		
-		if (MustRoomNumbers != 0 ) {
+		if (MustRoomNumbers != 0 && (i == 1 || i == (XGridSize * YGridSize - (2 * XGridSize + 2 * YGridSize)) + 2  ) ) { //TODO lepiej to wymysl 
 			
 			auto RoomClass = RoomGenTemplate->MustRooms[MustRoomNumbers-1].RoomClasses;
 			ARoom* NewRoom = GetWorld()->SpawnActor<ARoom>(RoomClass);
@@ -72,7 +72,7 @@ TArray<ARoom*> ADungeonManager::GenerateRandomRooms() //InitRooms
 		}
 	}
 	
-	Algo::RandomShuffle(ArrayToReturn);
+	//Algo::RandomShuffle(ArrayToReturn);
 	
 	return  ArrayToReturn;
 }
