@@ -14,6 +14,7 @@ struct FRoomsStruct{
 	
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<ARoom> RoomClasses;
+
 	
 };
 

@@ -3,6 +3,7 @@
 
 #include "DungeonManager.h"
 #include <random>
+#include <cstdlib>
 #include "Algo/RandomShuffle.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -188,8 +189,9 @@ void ADungeonManager::MakeWayFromStartToEnd()
 	
 	if(StartX)
 	{
+		int PathNum = XGridSize / 2 ;
+		DrawRandomPath(PathNum,StartX,StartY);
 		DrawPath(StartX,StartY,KoniecX,KoniecY);
-		DrawRandomPath(5,StartX,StartY);
 	}
 }
 
@@ -200,7 +202,7 @@ void ADungeonManager::DrawRandomPath(int HowMany, int StartX, int StartY)
 	std::uniform_int_distribution<> dis(0, FMath::Min(XGridSize - 1,YGridSize - 1));
 	
 		for(int i = 0; i!=HowMany;i++)
-		{
+		{ 
 			StartX = StartX ? StartX: dis(rng);
 			StartY = StartY ? StartY: dis(rng);
 			DrawPath(StartX,StartY,dis(rng),dis(rng));
@@ -215,28 +217,33 @@ void ADungeonManager::DrawPath(int StartX, int StartY, int EndX, int EndY)
 
 	int LastKnowedX = StartX;
 	int LastKnowedY = StartY;
-	
-	for (int i = 0; i < FMath::Abs(diffX); i++) {
-		if (diffX > 0) {
-			OpenWay(LastKnowedX, LastKnowedY, 4);
-			LastKnowedX = LastKnowedX - 1;
-		}
-		else if (diffX < 0) {
-			OpenWay(LastKnowedX, LastKnowedY, 2);
-			LastKnowedX = LastKnowedX + 1;
-		}
-	}
 
-	// Przesunięcie wzdłuż osi Y
-	for (int i = 0; i < FMath::Abs(diffY); i++) {
-		if (diffY > 0) {
-			OpenWay(LastKnowedX, LastKnowedY, 3);
-			LastKnowedY = LastKnowedY - 1;
+	int AxisPointer = 0;
+	int axis = 0; //X Y 
+
+	while (diffX != 0 || diffY != 0)
+	{
+		axis = AxisPointer % 2;
+		
+		if (axis == 0 && diffX != 0)
+		{
+			int direction = (diffX > 0) ? 4 : 2; 
+			OpenWay(LastKnowedX, LastKnowedY, direction);
+			LastKnowedX += (diffX > 0) ? -1 : 1; 
+			diffX += (diffX > 0) ? -1 : 1; 
 		}
-		else if (diffY < 0) {
-			OpenWay(LastKnowedX, LastKnowedY, 1);
-			LastKnowedY = LastKnowedY + 1;
+		
+		else if (axis == 1 && diffY != 0)
+		{
+			int direction = (diffY > 0) ? 3 : 1; 
+			OpenWay(LastKnowedX, LastKnowedY, direction);
+			LastKnowedY += (diffY > 0) ? -1 : 1;
+			diffY += (diffY > 0) ? -1 : 1; 
 		}
+		
+		AxisPointer++;
+		AxisPointer += rand() % 2;
+		
 	}
 }
 
