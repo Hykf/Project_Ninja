@@ -5,7 +5,21 @@
 #include "CoreMinimal.h"
 #include "PaperSprite.h"
 #include "Engine/DataAsset.h"
+#include "UpgradeStats.h"
 #include "VillageUpgradeDataAsset.generated.h"
+
+USTRUCT(BlueprintType)
+struct FUpgradeStats
+{
+	GENERATED_USTRUCT_BODY()
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EUpgradeStats StatsType;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<float> UpgradesLevel;
+};
+
 
 USTRUCT(BlueprintType)
 struct FMerchantUpgrade
@@ -15,6 +29,9 @@ struct FMerchantUpgrade
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString Name;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString Description;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UPaperSprite* Sprite;
 
@@ -28,7 +45,7 @@ struct FMerchantUpgrade
 	int CurrentLevel;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<int> CharacterUpgrades;
+	TArray<FUpgradeStats> Upgrades;
 
 	// UPROPERTY(EditAnywhere)
 	// enum CurrencyType;
