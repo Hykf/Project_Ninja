@@ -7,4 +7,5 @@
 AMainCharacter::AMainCharacter()
 {
 	TreasureComponent = CreateDefaultSubobject<UTreasureComponent>(TEXT("TreasureComp"));
+	UtilityComponent = CreateDefaultSubobject<UUtilityComponent>(TEXT("UtilityComp"));
 }

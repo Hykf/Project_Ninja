@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "CharacterBase.h"
 #include "TreasureComponent.h"
+#include "UtilityComponent.h"
 #include "MainCharacter.generated.h"
 
 /**
@@ -20,5 +21,8 @@ public:
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	UTreasureComponent* TreasureComponent;
+	
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	UUtilityComponent* UtilityComponent;
 	
 };
