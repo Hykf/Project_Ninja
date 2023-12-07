@@ -40,32 +40,34 @@ public:
 	float CurrentExperience;
 	UPROPERTY(BlueprintReadWrite)
 	float DemandedExperience = 100;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	float MaxHealth = 100;
 	UPROPERTY(BlueprintReadWrite)
 	float CurrentHealth = MaxHealth;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	float MaxMana = 100;
 	UPROPERTY(BlueprintReadWrite)
 	float CurrentMana = MaxMana;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	float MaxSpeed = 450;
 	UPROPERTY(BlueprintReadWrite)
 	float CurrentSpeed = MaxSpeed;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	float SpeedModifier = 1;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	float Damage = 12;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	float DamageModifier = 1;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	float Defense = 15;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	float DefenseModifier = 1;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	float DefensePenetration = 0.01;
 	UPROPERTY(BlueprintReadWrite)
-	bool bAlive = true; 
+	bool bAlive = true;
+	UPROPERTY(BlueprintReadWrite)
+	bool bIsTakingDamage = false; 
 	
 	UFUNCTION(BlueprintCallable)
 	void ReceiveDamage(EDamageCategory DamageType, float DamageAmount);
