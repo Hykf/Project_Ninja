@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GlossaryEntryType.h"
 #include "PaperSprite.h"
 #include "Engine/DataAsset.h"
 #include "GlossaryDataAsset.generated.h"
@@ -14,12 +15,14 @@ struct FGlossaryEntry
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText Name;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UPaperSprite* Sprite;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText Description;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EGlossaryEntryType Type;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsAvailable;
 };
 
 UCLASS(BlueprintType)
