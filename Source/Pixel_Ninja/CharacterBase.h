@@ -18,7 +18,7 @@ public:
 	ACharacterBase();
 	
 protected:
-	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
+	UPROPERTY(BlueprintReadWrite,VisibleAnywhere)
 	UStatsComponent* Stats;
 	
 };
