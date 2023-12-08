@@ -25,4 +25,7 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	UUtilityComponent* UtilityComponent;
 	
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	UUtilityComponent* UtilityComponent;
+	
 };
