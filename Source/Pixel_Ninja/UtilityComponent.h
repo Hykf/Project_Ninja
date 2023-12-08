@@ -17,7 +17,7 @@ public:
 	UUtilityComponent();
 
 	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
-	int ArrowAmount = 3;
+	int ArrowAmount;
 
 protected:
 	// Called when the game starts
