@@ -19,7 +19,7 @@ public:
 
 	
 protected:	
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly,meta=(AllowPrivateAccess = "true"))
 	UStatsComponent* Stats;
 	
 	

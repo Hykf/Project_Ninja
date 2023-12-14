@@ -20,10 +20,10 @@ public:
 
 	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	int ArrowAmount;
-	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
-	TArray<TSubclassOf<ASakeBase>> Sake;
-	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
-	TArray<TSubclassOf<ABombBase>> Bomb;
+	UPROPERTY(BlueprintReadWrite)
+	ASakeBase* Sake;
+	UPROPERTY(BlueprintReadWrite)
+	ABombBase* Bomb;
 
 protected:
 	// Called when the game starts
