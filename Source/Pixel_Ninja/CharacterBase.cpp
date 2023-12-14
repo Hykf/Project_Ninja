@@ -6,6 +6,5 @@
 
 ACharacterBase::ACharacterBase()
 {
-	PrimaryActorTick.bCanEverTick = true;
 	Stats = CreateDefaultSubobject<UStatsComponent>(TEXT("Stats Component"));
 }

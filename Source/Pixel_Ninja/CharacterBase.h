@@ -16,9 +16,12 @@ class PIXEL_NINJA_API ACharacterBase : public APaperZDCharacter
 	GENERATED_BODY()
 public:
 	ACharacterBase();
+
 	
-protected:
-	UPROPERTY(BlueprintReadWrite,VisibleAnywhere)
+protected:	
+	UPROPERTY(BlueprintReadWrite)
 	UStatsComponent* Stats;
+	
+	
 	
 };

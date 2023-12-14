@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "BombBase.h"
+#include "SakeBase.h"
 #include "Components/ActorComponent.h"
 #include "UtilityComponent.generated.h"
 
@@ -18,6 +20,10 @@ public:
 
 	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	int ArrowAmount;
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
+	TArray<TSubclassOf<ASakeBase>> Sake;
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
+	TArray<TSubclassOf<ABombBase>> Bomb;
 
 protected:
 	// Called when the game starts
