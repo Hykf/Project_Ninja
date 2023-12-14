@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AbilityComponent.h"
 #include "CharacterBase.h"
 #include "TreasureComponent.h"
 #include "UtilityComponent.h"
@@ -24,6 +25,9 @@ public:
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	UUtilityComponent* UtilityComponent;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	UAbilityComponent* AbilityComponent;
 
 	
 	

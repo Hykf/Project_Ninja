@@ -8,6 +8,7 @@ AMainCharacter::AMainCharacter():ACharacterBase()
 {
 	TreasureComponent = CreateDefaultSubobject<UTreasureComponent>(TEXT("TreasureComp"));
 	UtilityComponent = CreateDefaultSubobject<UUtilityComponent>(TEXT("UtilityComp"));
+	AbilityComponent = CreateDefaultSubobject<UAbilityComponent>(TEXT("AbilityComp"));
 
 	if(!Stats) Stats = CreateDefaultSubobject<UStatsComponent>(TEXT("Stats"));
 }
