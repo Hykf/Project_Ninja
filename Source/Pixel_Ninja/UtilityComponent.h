@@ -20,6 +20,8 @@ public:
 
 	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	int ArrowAmount;
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
+	int FireballAmount;
 	UPROPERTY(BlueprintReadWrite)
 	ASakeBase* Sake;
 	UPROPERTY(BlueprintReadWrite)
