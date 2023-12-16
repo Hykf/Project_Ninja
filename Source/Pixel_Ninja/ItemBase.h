@@ -27,7 +27,7 @@ protected:
 	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
 	UPaperSprite* Sprite;
 
-	UFUNCTION(BlueprintNativeEvent,Category="Item")
+	UFUNCTION(BlueprintNativeEvent,Category="Item",BlueprintCallable)
 	void UseItem(ACharacterBase* Character);
 	
 };
