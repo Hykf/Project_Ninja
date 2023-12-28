@@ -65,7 +65,7 @@ public:
 	float GetSizeWidth() const;
 	UFUNCTION()
 	void ApplyVisibility();
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void ChangeVisibility(UPaperTileMapComponent* TileComp, bool isVisible);
 
 protected:
