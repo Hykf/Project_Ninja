@@ -26,7 +26,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	int AddGold(int Amount);
 
+	UFUNCTION(BlueprintCallable)
+	int AddMaterial(int Amount);
 
+	UFUNCTION(BlueprintCallable)
+	int AddChi(int Amount);
+	
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

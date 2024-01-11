@@ -15,10 +15,22 @@ UTreasureComponent::UTreasureComponent()
 
 
 
-int UTreasureComponent::AddGold(int Amout)
+int UTreasureComponent::AddGold(int Amount)
 {
-	GoldAmount += Amout;
+	GoldAmount += Amount;
 	return  GoldAmount;
+}
+
+int UTreasureComponent::AddMaterial(int Amount)
+{
+	MaterialAmount += Amount;
+	return  MaterialAmount;
+}
+
+int UTreasureComponent::AddChi(int Amount)
+{
+	ChiAmount += Amount;
+	return  ChiAmount;
 }
 
 // Called when the game starts
