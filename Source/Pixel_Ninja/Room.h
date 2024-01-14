@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "PaperTileMapActor.h"
+#include "EnemyBase.h"
 #include "Room.generated.h"
 
 
@@ -31,6 +32,9 @@ protected:
 	UPaperTileMapComponent* TileMapComponentWallUp;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	UPaperTileMapComponent* TileMapComponentWallDown;
+	
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	TMap<TSubclassOf<AEnemyBase>,int> Enemies;
 	
 	UPROPERTY()
 	float SizeHeight = 640.f;
