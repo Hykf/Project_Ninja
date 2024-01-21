@@ -13,7 +13,8 @@ enum class  EEventAdjustment : uint8
 {
 	DoNothing				 UMETA(DisplayName = "Do Nothing"),
 	Add				         UMETA(DisplayName = "Increase Value"),
-	Decrease				 UMETA(DisplayName = "Decrease Value")
+	Decrease				 UMETA(DisplayName = "Decrease Value"),
+	Set						 UMETA(DisplayName = "Set Value"),
 };
 
 UENUM(BlueprintType)
