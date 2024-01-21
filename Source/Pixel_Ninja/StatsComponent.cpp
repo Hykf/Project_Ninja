@@ -22,11 +22,20 @@ void UStatsComponent::ReceiveDamage(EDamageCategory DamageType, float DamageAmou
 	case EDamageCategory::Physical:
 		ReceivedDamage = DamageAmount * (1 - (Defense/100));
 		CurrentHealth = FMath::Clamp(CurrentHealth - ReceivedDamage,0,MaxHealth);
-		if(!CurrentHealth) OnDie.Broadcast();
+		if(!CurrentHealth)
+		{
+			OnDie.Broadcast();
+			bAlive = false;
+		}
+		
 		break;
 	case EDamageCategory::TrueDamage:
 		CurrentHealth = FMath::Clamp(CurrentHealth - DamageAmount,0,MaxHealth);
-		if(!CurrentHealth) OnDie.Broadcast();
+		if(!CurrentHealth)
+		{
+			OnDie.Broadcast();
+			bAlive = false;
+		}
 		break;
 		default: break;
 	}
