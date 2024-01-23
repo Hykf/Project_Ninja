@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "PaperZDCharacter.h"
 #include "StatsComponent.h"
+#include "NiagaraSystem.h"
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraComponent.h"
 #include "CharacterBase.generated.h"
 
 /**
@@ -21,7 +24,9 @@ public:
 protected:	
 	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly,meta=(AllowPrivateAccess = "true"))
 	UStatsComponent* Stats;
-	
-	
+
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly,meta=(AllowPrivateAccess = "true"))
+	TObjectPtr<UNiagaraSystem> GetHitVFEffect;
+
 	
 };
