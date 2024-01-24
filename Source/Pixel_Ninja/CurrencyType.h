@@ -8,4 +8,5 @@ enum class ECurrencyType : uint8
 	Gold UMETA(DisplayName = "Gold"),
 	Rice  UMETA(DisplayName = "Rice"),
 	Iron UMETA(DisplayName = "Iron"),
+	Chi UMETA(DisplayName = "Chi")
 };
