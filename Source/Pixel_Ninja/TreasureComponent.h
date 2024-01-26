@@ -18,19 +18,24 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite)
 	int GoldAmount;
-	UPROPERTY()
-	int MaterialAmount;
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
+	int IronAmount;
+	UPROPERTY(BlueprintReadWrite)
 	int ChiAmount;
+	UPROPERTY(BlueprintReadWrite)
+	int RiceAmount;
 
 	UFUNCTION(BlueprintCallable)
 	int AddGold(int Amount);
 
 	UFUNCTION(BlueprintCallable)
-	int AddMaterial(int Amount);
+	int AddIron(int Amount);
 
 	UFUNCTION(BlueprintCallable)
 	int AddChi(int Amount);
+
+	UFUNCTION(BlueprintCallable)
+	int AddRice(int Amount);
 	
 protected:
 	// Called when the game starts
