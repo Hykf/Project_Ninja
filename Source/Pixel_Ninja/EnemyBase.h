@@ -14,4 +14,5 @@ class PIXEL_NINJA_API AEnemyBase : public ACharacterBase
 {
 	GENERATED_BODY()
 	
+	
 };
